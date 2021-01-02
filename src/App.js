@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 import axios from 'axios'
 
@@ -22,11 +23,18 @@ const tileserverUrl = 'https://ballometer.io/tiles/'
 
 const dataUrl = ''
 
-const getInitialData = (setData, setIndex, setLoading, informUser) => {
-    const urlParams = new URLSearchParams(window.location.search)
-    const flightId = urlParams.get('flightId')
+const getInitialData = (
+    setData, 
+    setIndex, 
+    setLoading, 
+    informUser, 
+    username, 
+    flightId
+) => {
 
-    const url = dataUrl + '/store/points' + (flightId ? '?flightId=' + flightId : '')
+    const url = dataUrl + '/api/read/points?username=' + username 
+        + (flightId ? '&flightId=' + flightId : '')
+
 
     axios.get(url)
         .then(res => {
@@ -88,8 +96,8 @@ const getInitialData = (setData, setIndex, setLoading, informUser) => {
         })
 }
 
-const getNow = (setNow) => {
-    axios.get(dataUrl + '/store/now')
+const getNow = (setNow, username) => {
+    axios.get(dataUrl + '/api/read/now?username=' + username)
         .then(res => {
             setNow(res.data)
         })
@@ -99,6 +107,8 @@ const getNow = (setNow) => {
 }
 
 const App = () => {
+
+    const { username, flightId } = useParams()
 
     const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
     const [viewportWidth, setViewportWidth] = useState(window.innerWidth)
@@ -150,12 +160,15 @@ const App = () => {
     }, [])
 
     useEffect(() => {
-        getInitialData(setData, setIndex, setLoading, informUser)
+        getInitialData(setData, setIndex, setLoading, informUser, username, flightId)
     }, [])
 
     useEffect(() => {
+        if (flightId) {
+            return
+        }   
         const interval = setInterval(() => {
-            getNow(setNow)
+            getNow(setNow, username)
         }, 1000)
         setNowIntervalId(interval)
         return () => clearInterval(interval)

@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+
 import axios from 'axios'
 import moment from 'moment'
 
@@ -21,10 +23,12 @@ const ListFlights = ({
     dataUrl
 }) => {
 
+    const { username } = useParams()
+
     const [flights, setFlights] = useState([])
 
     useEffect(() => {
-        axios.get(dataUrl + '/store/listFlights')
+        axios.get(dataUrl + '/api/read/listFlights?username=' + username)
             .then(res => {
                 setFlights(res.data)
             })
@@ -50,7 +54,7 @@ const ListFlights = ({
                 <List component="nav">
                     {flights.reverse().map((flight, index) => {
                         return (
-                            <ListItemLink key={index} href={'?flightId=' + flight.flight_id}>
+                            <ListItemLink key={index} href={'/' + username + '/' + flight.flight_id}>
                                 <ListItemText>
                                     {moment(flight.start * 1000).format('D.M.YYYY') +
                                     ', flight ' + flight.flight_id}
