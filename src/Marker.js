@@ -14,28 +14,27 @@ const Marker = ({
     imagePath,
     clickText
 }) => {
-    const point = [longitude, latitude]
-
-    const data = {
-        'geometry': {
-            'type': 'Point',
-            'coordinates': point
-        },
-        'type': 'Feature'
-    }
-
     const [displaySnackbar, setDisplaySnackbar] = useState(false)
+    const [ready, setReady] = useState(false)
 
     useEffect(() => {
         if (map) {
             map.loadImage(imagePath, (err, image) => {
-                if (err || !image) return
+                if (err || !image) {
+                    return
+                }
 
                 map.addImage(buildName(name), image)
 
                 map.addSource(buildName(name), {
                     'type': 'geojson',
-                    'data': data
+                    'data': {
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [longitude, latitude]
+                        },
+                        'type': 'Feature'
+                    }
                 })
 
                 map.addLayer({
@@ -48,7 +47,6 @@ const Marker = ({
                         'icon-allow-overlap': true
                     }
                 })
-
                 if (onDrag) {
                     const canvas = map.getCanvasContainer()
 
@@ -93,25 +91,35 @@ const Marker = ({
                         setDisplaySnackbar(true)
                     })
                 }
+
+                setReady(true)
             })
         }
     }, [map])
 
     useEffect(() => {
-        if (map && map.getSource(buildName(name))) {
-            map.getSource(buildName(name)).setData(data)
+        if (!ready) {
+            return
         }
-    }, [longitude, latitude])
+        map.getSource(buildName(name)).setData({
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [longitude, latitude]
+            },
+            'type': 'Feature'
+        })
+    }, [longitude, latitude, ready])
 
     useEffect(() => {
-        if (map && map.getSource(buildName(name))) {
-            map.setLayoutProperty(
-                buildName(name),
-                'visibility',
-                visible ? 'visible' : 'none'
-            )
+        if (!ready) {
+            return
         }
-    }, [visible])
+        map.setLayoutProperty(
+            buildName(name),
+            'visibility',
+            visible ? 'visible' : 'none'
+        )
+    }, [visible, ready])
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
