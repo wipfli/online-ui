@@ -36,7 +36,6 @@ const getInitialData = (
     const url = dataUrl + '/api/read/points?username=' + username
         + (flightId ? '&flightId=' + flightId : '')
 
-
     axios.get(url)
         .then(res => {
             const dataIn = res.data
@@ -180,7 +179,13 @@ const App = () => {
             return
         }
 
-        if (!now.recording && nowIntervalId) {
+        const secondsSince = unixtime => {
+            return (new Date() - new Date(unixtime / 1e-3)) * 1e-3
+        }
+
+        if (nowIntervalId && (secondsSince(now.time) > 3600)) {
+            // Last time someone wrote to the server was more 
+            // than 1 hour ago. Let\'s assume the flight is over.
             clearInterval(nowIntervalId)
             return
         }

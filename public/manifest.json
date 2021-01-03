@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Ballometer",
+  "name": "Ballometer - A sensor box for hot air balloons",
   "icons": [
     {
       "src": "favicon.ico",

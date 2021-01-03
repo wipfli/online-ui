@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom'
 
 import App from './App'
+import Home from './Home'
 
 export default function Main() {
     return (
@@ -22,8 +23,4 @@ export default function Main() {
             </Switch>
         </Router>
     )
-}
-
-function Home() {
-    return <h2>Home</h2>
 }
