@@ -128,7 +128,7 @@ const Map = ({
                 top: 0,
                 padding: 10
             }}>
-                <Paper>
+                <Paper style={{ opacity: 0.8 }}>
                     <Box display="flex" flexDirection="column">
                         <Tooltip title="Zoom In" placement="left">
                             <IconButton onClick={zoomIn} size="small">
@@ -172,7 +172,7 @@ const Map = ({
                 callbackIndex={callbackIndex}
                 color="#3498db"
                 historyVisible={true}
-                imagePath="./balloon.png"
+                imagePath="/balloon.png"
                 loading={loading}
             />
         </div>

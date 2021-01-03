@@ -293,7 +293,7 @@ const App = () => {
                 top: 0,
                 padding: 10
             }}>
-                <Paper>
+                <Paper style={{ opacity: 0.8 }}>
                     <Box display="flex" flexDirection="column">
                         <Tooltip title="Plots" placement="right">
                             <IconButton onClick={() => setDisplayPlots(true)} size="small">

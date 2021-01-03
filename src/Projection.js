@@ -63,7 +63,7 @@ const Projection = ({
                         longitude={value[0]}
                         latitude={value[1]}
                         visible={visible}
-                        imagePath="point-small.png"
+                        imagePath="/point-small.png"
                         clickText={'Location in ' + labels[index]}
                         key={index}
                     />
