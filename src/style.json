@@ -7,10 +7,14 @@
     "sources": {
         "openmaptiles": {
             "type": "vector",
-            "url": "http://localhost:8080/data/v3.json"
+            "url": "https://ballometer.io/tiles/data/v3.json"
+        },
+        "aviation": {
+            "type": "vector",
+            "url": "https://ballometer.io/tiles/data/aviation.json"
         }
     },
-    "glyphs": "http://localhost:8080/fonts/{fontstack}/{range}.pbf",
+    "glyphs": "https://ballometer.io/tiles/fonts/{fontstack}/{range}.pbf",
     "layers": [
         {
             "id": "background",
@@ -3308,6 +3312,305 @@
                         ]
                     ]
                 }
+            }
+        },
+        {
+            "id": "aviation-aulav-fill",
+            "type": "fill",
+            "source": "aviation",
+            "source-layer": "aulav",
+            "minzoom": 11,
+            "paint": {
+                "fill-color": "#a61662",
+                "fill-opacity": 0.2
+            }
+        },
+        {
+            "id": "aviation-aulav-line",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "aulav",
+            "minzoom": 11,
+            "paint": {
+                "line-color": "#a61662",
+                "line-width": 2,
+                "line-opacity": 0.75
+            }
+        },
+        {
+            "id": "aviation-powerline-minor",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "powerlines",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "power",
+                    "minor_line"
+                ]
+            ],
+            "paint": {
+                "line-dasharray": [
+                    1,
+                    1
+                ],
+                "line-width": 2,
+                "line-color": "#0383b9",
+                "line-opacity": 0.75
+            }
+        },
+        {
+            "id": "aviation-powerline",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "powerlines",
+            "minzoom": 11,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "power",
+                    "line"
+                ]
+            ],
+            "paint": {
+                "line-dasharray": [
+                    10,
+                    2,
+                    1,
+                    2
+                ],
+                "line-width": 2,
+                "line-color": "#0383b9",
+                "line-opacity": 0.75
+            }
+        },
+        {
+            "id": "aviation-airspace-lines-shade",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "airspaces",
+            "minzoom": 9,
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "CAT",
+                    "DANGER"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "GLIDING"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "RESTRICTED"
+                ]
+            ],
+            "paint": {
+                "line-opacity": 0.1,
+                "line-color": "#0068b4",
+                "line-width": 8,
+                "line-offset": 4
+            }
+        },
+        {
+            "id": "aviation-airspace-lines",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "airspaces",
+            "minzoom": 9,
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "CAT",
+                    "DANGER"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "GLIDING"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "RESTRICTED"
+                ]
+            ],
+            "paint": {
+                "line-color": "#0068b4",
+                "line-opacity": 0.75
+            }
+        },
+        {
+            "id": "aviation-airspace-lines-ctr-shade",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "airspaces",
+            "minzoom": 9,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "CAT",
+                    "CTR"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "rgba(0, 104, 180, 1)",
+                "line-opacity": 0.1,
+                "line-offset": 4,
+                "line-width": 8
+            }
+        },
+        {
+            "id": "aviation-airspace-lines-ctr",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "airspaces",
+            "minzoom": 9,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "CAT",
+                    "CTR"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "rgba(0, 104, 180, 1)",
+                "line-width": 3,
+                "line-offset": 1.5,
+                "line-opacity": 0.75,
+                "line-dasharray": [
+                    3,
+                    1
+                ]
+            }
+        },
+        
+        {
+            "id": "aviation-airspace-line-labels",
+            "type": "symbol",
+            "source": "aviation",
+            "source-layer": "airspaces",
+            "minzoom": 10,
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "CAT",
+                    "DANGER"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "GLIDING"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "RESTRICTED"
+                ]
+            ],
+            "layout": {
+                "symbol-placement": "line",
+                "text-field": "{N}",
+                "text-font": [
+                    "Noto Sans Regular"
+                ],
+                "text-offset": [
+                    0,
+                    1
+                ],
+                "text-size": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            13,
+                            12
+                        ],
+                        [
+                            14,
+                            13
+                        ]
+                    ]
+                },
+                "text-line-height": 1.2,
+                "text-ignore-placement": false,
+                "text-allow-overlap": false,
+                "text-justify": "center"
+            },
+            "paint": {
+                "text-color": "rgba(109, 107, 73, 1)",
+                "text-halo-blur": 0.5,
+                "text-halo-width": 1,
+                "text-halo-color": "rgba(255, 255, 255, 1)",
+                "icon-color": "rgba(0, 0, 0, 1)"
+            }
+        },
+        {
+            "id": "aviation-airspace-labels",
+            "type": "symbol",
+            "source": "aviation",
+            "source-layer": "airspaces",
+            "minzoom": 10,
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "CAT",
+                    "DANGER"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "GLIDING"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "RESTRICTED"
+                ]
+            ],
+            "layout": {
+                "symbol-placement": "point",
+                "text-field": "{N}\n{CAT} {AB} {AB_U} {AB_REF}",
+                "text-font": [
+                    "Noto Sans Regular"
+                ],
+                "text-size": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            13,
+                            12
+                        ],
+                        [
+                            14,
+                            13
+                        ]
+                    ]
+                },
+                "text-justify": "center"
+            },
+            "paint": {
+                "text-color": "rgba(109, 107, 73, 1)",
+                "text-halo-blur": 0.5,
+                "text-halo-width": 1,
+                "text-halo-color": "rgba(255, 255, 255, 1)",
+                "icon-color": "rgba(0, 0, 0, 1)"
             }
         }
     ],

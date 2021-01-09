@@ -16,13 +16,6 @@ import MapTrace from './MapTrace'
 
 import myBestStyle from './style.json'
 
-const getStyleWithUrl = (style, url) => {
-    const newStyle = { ...style }
-    newStyle.sources.openmaptiles.url = url.replace(/\/$/, '') + '/data/v3.json'
-    newStyle.glyphs = url.replace(/\/$/, '') + '/fonts/{fontstack}/{range}.pbf'
-    return newStyle
-}
-
 const Map = ({
     viewportWidth,
     viewportHeight,
@@ -69,7 +62,7 @@ const Map = ({
     useEffect(() => {
         const map = new mapboxgl.Map({
             container: mapContainerRef.current,
-            style: getStyleWithUrl(myBestStyle, tileserverUrl),
+            style: myBestStyle,
             center: [data.longitude[index], data.latitude[index]],
             zoom: zoom,
             attributionControl: false
@@ -156,6 +149,7 @@ const Map = ({
             }}>
                 <Box display="flex" justifyContent="flex-end" mx={1} color="text.secondary">
                     <Typography variant="caption">
+                        <Link color="inherit" href="https://www.openaip.net/">©openAIP </Link>
                         <Link color="inherit" href="https://openmaptiles.org/">©OpenMapTiles </Link>
                         <Link color="inherit" href="https://www.openstreetmap.org/about/">©OpenStreetMap </Link>
                     </Typography>
