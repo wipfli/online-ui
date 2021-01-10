@@ -2970,6 +2970,233 @@
                 }
             }
         },
+        
+        {
+            "id": "building",
+            "type": "fill",
+            "metadata": {
+                "mapbox:group": "1444849364238.8171"
+            },
+            "source": "openmaptiles",
+            "source-layer": "building",
+            "paint": {
+                "fill-color": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            15.5,
+                            "rgba(0, 0, 0, 1)"
+                        ],
+                        [
+                            16,
+                            "rgba(0, 0, 0, 1)"
+                        ]
+                    ]
+                },
+                "fill-antialias": true
+            }
+        },        
+        {
+            "id": "aviation-airspace-lines-shade",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "airspaces",
+            "minzoom": 9,
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "CAT",
+                    "DANGER"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "GLIDING"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "RESTRICTED"
+                ]
+            ],
+            "paint": {
+                "line-opacity": 0.1,
+                "line-color": "#0068b4",
+                "line-width": 8,
+                "line-offset": 4
+            }
+        },
+        {
+            "id": "aviation-airspace-lines",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "airspaces",
+            "minzoom": 9,
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "CAT",
+                    "DANGER"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "GLIDING"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "RESTRICTED"
+                ],
+                [
+                    "!=",
+                    "CAT",
+                    "CTR"
+                ]
+            ],
+            "paint": {
+                "line-color": "#0068b4",
+                "line-opacity": 0.75
+            }
+        },
+        {
+            "id": "aviation-airspace-lines-ctr-shade",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "airspaces",
+            "minzoom": 9,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "CAT",
+                    "CTR"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "rgba(0, 104, 180, 1)",
+                "line-opacity": 0.1,
+                "line-offset": 4,
+                "line-width": 8
+            }
+        },
+        {
+            "id": "aviation-airspace-lines-ctr",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "airspaces",
+            "minzoom": 9,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "CAT",
+                    "CTR"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "rgba(0, 104, 180, 1)",
+                "line-width": 3,
+                "line-offset": 1.5,
+                "line-opacity": 0.75,
+                "line-dasharray": [
+                    3,
+                    1
+                ]
+            }
+        },
+        
+        {
+            "id": "aviation-aulav-fill",
+            "type": "fill",
+            "source": "aviation",
+            "source-layer": "aulav",
+            "minzoom": 11,
+            "paint": {
+                "fill-color": "#a61662",
+                "fill-opacity": 0.2
+            }
+        },
+        {
+            "id": "aviation-aulav-line",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "aulav",
+            "minzoom": 11,
+            "paint": {
+                "line-color": "#a61662",
+                "line-width": 2,
+                "line-opacity": 0.75
+            }
+        },
+        {
+            "id": "aviation-powerline-minor",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "powerlines",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "power",
+                    "minor_line"
+                ]
+            ],
+            "paint": {
+                "line-dasharray": [
+                    1,
+                    1
+                ],
+                "line-width": 2,
+                "line-color": "#0383b9",
+                "line-opacity": 0.75
+            }
+        },
+        {
+            "id": "aviation-powerline",
+            "type": "line",
+            "source": "aviation",
+            "source-layer": "powerlines",
+            "minzoom": 11,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "power",
+                    "line"
+                ]
+            ],
+            "paint": {
+                "line-dasharray": [
+                    10,
+                    2,
+                    1,
+                    2
+                ],
+                "line-width": 2,
+                "line-color": "#0383b9",
+                "line-opacity": 0.75
+            }
+        },
+
+
+        
+
+
+
+
+
+
+
         {
             "filter": [
                 "all",
@@ -3242,270 +3469,11 @@
             "type": "symbol"
         },
         {
-            "id": "building",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1444849364238.8171"
-            },
-            "source": "openmaptiles",
-            "source-layer": "building",
-            "paint": {
-                "fill-color": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            15.5,
-                            "rgba(0, 0, 0, 1)"
-                        ],
-                        [
-                            16,
-                            "#dfdbd7"
-                        ]
-                    ]
-                },
-                "fill-antialias": true
-            }
-        },
-        {
-            "id": "building-top",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1444849364238.8171"
-            },
-            "source": "openmaptiles",
-            "source-layer": "building",
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "fill-translate": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            14,
-                            [
-                                0,
-                                0
-                            ]
-                        ],
-                        [
-                            16,
-                            [
-                                -2,
-                                -2
-                            ]
-                        ]
-                    ]
-                },
-                "fill-outline-color": "#dfdbd7",
-                "fill-color": "rgba(0, 0, 0, 1)",
-                "fill-opacity": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            13,
-                            0
-                        ],
-                        [
-                            16,
-                            1
-                        ]
-                    ]
-                }
-            }
-        },
-        {
-            "id": "aviation-aulav-fill",
-            "type": "fill",
-            "source": "aviation",
-            "source-layer": "aulav",
-            "minzoom": 11,
-            "paint": {
-                "fill-color": "#a61662",
-                "fill-opacity": 0.2
-            }
-        },
-        {
-            "id": "aviation-aulav-line",
-            "type": "line",
-            "source": "aviation",
-            "source-layer": "aulav",
-            "minzoom": 11,
-            "paint": {
-                "line-color": "#a61662",
-                "line-width": 2,
-                "line-opacity": 0.75
-            }
-        },
-        {
-            "id": "aviation-powerline-minor",
-            "type": "line",
-            "source": "aviation",
-            "source-layer": "powerlines",
-            "minzoom": 12,
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "power",
-                    "minor_line"
-                ]
-            ],
-            "paint": {
-                "line-dasharray": [
-                    1,
-                    1
-                ],
-                "line-width": 2,
-                "line-color": "#0383b9",
-                "line-opacity": 0.75
-            }
-        },
-        {
-            "id": "aviation-powerline",
-            "type": "line",
-            "source": "aviation",
-            "source-layer": "powerlines",
-            "minzoom": 11,
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "power",
-                    "line"
-                ]
-            ],
-            "paint": {
-                "line-dasharray": [
-                    10,
-                    2,
-                    1,
-                    2
-                ],
-                "line-width": 2,
-                "line-color": "#0383b9",
-                "line-opacity": 0.75
-            }
-        },
-        {
-            "id": "aviation-airspace-lines-shade",
-            "type": "line",
-            "source": "aviation",
-            "source-layer": "airspaces",
-            "minzoom": 9,
-            "filter": [
-                "all",
-                [
-                    "!=",
-                    "CAT",
-                    "DANGER"
-                ],
-                [
-                    "!=",
-                    "CAT",
-                    "GLIDING"
-                ],
-                [
-                    "!=",
-                    "CAT",
-                    "RESTRICTED"
-                ]
-            ],
-            "paint": {
-                "line-opacity": 0.1,
-                "line-color": "#0068b4",
-                "line-width": 8,
-                "line-offset": 4
-            }
-        },
-        {
-            "id": "aviation-airspace-lines",
-            "type": "line",
-            "source": "aviation",
-            "source-layer": "airspaces",
-            "minzoom": 9,
-            "filter": [
-                "all",
-                [
-                    "!=",
-                    "CAT",
-                    "DANGER"
-                ],
-                [
-                    "!=",
-                    "CAT",
-                    "GLIDING"
-                ],
-                [
-                    "!=",
-                    "CAT",
-                    "RESTRICTED"
-                ]
-            ],
-            "paint": {
-                "line-color": "#0068b4",
-                "line-opacity": 0.75
-            }
-        },
-        {
-            "id": "aviation-airspace-lines-ctr-shade",
-            "type": "line",
-            "source": "aviation",
-            "source-layer": "airspaces",
-            "minzoom": 9,
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "CAT",
-                    "CTR"
-                ]
-            ],
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "line-color": "rgba(0, 104, 180, 1)",
-                "line-opacity": 0.1,
-                "line-offset": 4,
-                "line-width": 8
-            }
-        },
-        {
-            "id": "aviation-airspace-lines-ctr",
-            "type": "line",
-            "source": "aviation",
-            "source-layer": "airspaces",
-            "minzoom": 9,
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "CAT",
-                    "CTR"
-                ]
-            ],
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "line-color": "rgba(0, 104, 180, 1)",
-                "line-width": 3,
-                "line-offset": 1.5,
-                "line-opacity": 0.75,
-                "line-dasharray": [
-                    3,
-                    1
-                ]
-            }
-        },
-        
-        {
             "id": "aviation-airspace-line-labels",
             "type": "symbol",
             "source": "aviation",
             "source-layer": "airspaces",
-            "minzoom": 10,
+            "minzoom": 9,
             "filter": [
                 "all",
                 [
@@ -3534,6 +3502,7 @@
                     0,
                     1
                 ],
+                "text-transform": "uppercase",
                 "text-size": {
                     "base": 1,
                     "stops": [
@@ -3553,7 +3522,7 @@
                 "text-justify": "center"
             },
             "paint": {
-                "text-color": "rgba(109, 107, 73, 1)",
+                "text-color": "#0068b4",
                 "text-halo-blur": 0.5,
                 "text-halo-width": 1,
                 "text-halo-color": "rgba(255, 255, 255, 1)",
@@ -3603,10 +3572,11 @@
                         ]
                     ]
                 },
-                "text-justify": "center"
+                "text-justify": "center",
+                "text-transform": "uppercase"
             },
             "paint": {
-                "text-color": "rgba(109, 107, 73, 1)",
+                "text-color": "#0068b4",
                 "text-halo-blur": 0.5,
                 "text-halo-width": 1,
                 "text-halo-color": "rgba(255, 255, 255, 1)",

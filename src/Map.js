@@ -68,6 +68,12 @@ const Map = ({
             attributionControl: false
         })
 
+        const scale = new mapboxgl.ScaleControl({
+            maxWidth: 80,
+            unit: 'metric'
+        })
+        map.addControl(scale)
+
         map.dragRotate.disable()
         map.touchZoomRotate.disableRotation()
 
