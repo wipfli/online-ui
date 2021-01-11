@@ -2980,19 +2980,7 @@
             "source": "openmaptiles",
             "source-layer": "building",
             "paint": {
-                "fill-color": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            15.5,
-                            "rgba(0, 0, 0, 1)"
-                        ],
-                        [
-                            16,
-                            "rgba(0, 0, 0, 1)"
-                        ]
-                    ]
-                },
+                "fill-color": "rgba(0, 0, 0, 0.1)",
                 "fill-antialias": true
             }
         },        
@@ -3021,10 +3009,10 @@
                 ]
             ],
             "paint": {
-                "line-opacity": 0.1,
+                "line-opacity": 0.0,
                 "line-color": "#0068b4",
-                "line-width": 8,
-                "line-offset": 4
+                "line-width": 6,
+                "line-offset": 3
             }
         },
         {
@@ -3058,7 +3046,7 @@
             ],
             "paint": {
                 "line-color": "#0068b4",
-                "line-opacity": 0.75
+                "line-opacity": 0.4
             }
         },
         {
@@ -3080,7 +3068,7 @@
             },
             "paint": {
                 "line-color": "rgba(0, 104, 180, 1)",
-                "line-opacity": 0.1,
+                "line-opacity": 0.0,
                 "line-offset": 4,
                 "line-width": 8
             }
@@ -3106,7 +3094,7 @@
                 "line-color": "rgba(0, 104, 180, 1)",
                 "line-width": 3,
                 "line-offset": 1.5,
-                "line-opacity": 0.75,
+                "line-opacity": 0.25,
                 "line-dasharray": [
                     3,
                     1
@@ -3122,7 +3110,7 @@
             "minzoom": 11,
             "paint": {
                 "fill-color": "#a61662",
-                "fill-opacity": 0.2
+                "fill-opacity": 0.1
             }
         },
         {
@@ -3134,7 +3122,7 @@
             "paint": {
                 "line-color": "#a61662",
                 "line-width": 2,
-                "line-opacity": 0.75
+                "line-opacity": 0.5
             }
         },
         {
@@ -3158,7 +3146,7 @@
                 ],
                 "line-width": 2,
                 "line-color": "#0383b9",
-                "line-opacity": 0.75
+                "line-opacity": 0.7
             }
         },
         {
@@ -3184,7 +3172,7 @@
                 ],
                 "line-width": 2,
                 "line-color": "#0383b9",
-                "line-opacity": 0.75
+                "line-opacity": 0.7
             }
         },
 
@@ -3473,7 +3461,7 @@
             "type": "symbol",
             "source": "aviation",
             "source-layer": "airspaces",
-            "minzoom": 9,
+            "minzoom": 11,
             "filter": [
                 "all",
                 [
@@ -3534,7 +3522,7 @@
             "type": "symbol",
             "source": "aviation",
             "source-layer": "airspaces",
-            "minzoom": 10,
+            "minzoom": 11,
             "filter": [
                 "all",
                 [
