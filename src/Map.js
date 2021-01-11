@@ -4,13 +4,13 @@ import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 import { IconButton, Typography } from '@material-ui/core'
+import MyLocationIcon from '@material-ui/icons/MyLocation'
 import AddIcon from '@material-ui/icons/Add'
 import RemoveIcon from '@material-ui/icons/Remove'
-import LocationOnIcon from '@material-ui/icons/LocationOn'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import Box from '@material-ui/core/Box'
 import Link from '@material-ui/core/Link'
 import Tooltip from '@material-ui/core/Tooltip'
-import Paper from '@material-ui/core/Paper'
 
 import MapTrace from './MapTrace'
 
@@ -127,25 +127,28 @@ const Map = ({
                 top: 0,
                 padding: 10
             }}>
-                <Paper style={{ opacity: 0.8 }}>
-                    <Box display="flex" flexDirection="column">
-                        <Tooltip title="Zoom In" placement="left">
-                            <IconButton onClick={zoomIn} size="small">
-                                <AddIcon />
-                            </IconButton>
-                        </Tooltip>
-                        <Tooltip title="Zoom Out" placement="left">
-                            <IconButton onClick={zoomOut} size="small">
-                                <RemoveIcon />
-                            </IconButton>
-                        </Tooltip>
-                        <Tooltip title="Locate Balloon" placement="left">
-                            <IconButton onClick={locateBalloon} size="small">
-                                <LocationOnIcon />
-                            </IconButton>
-                        </Tooltip>
-                    </Box>
-                </Paper>
+                <Box display="flex" flexDirection="column">
+                    <Tooltip title="Zoom In" placement="left">
+                        <IconButton onClick={zoomIn}>
+                            <AddIcon />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Zoom Out" placement="left">
+                        <IconButton onClick={zoomOut}>
+                            <RemoveIcon />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Go to Balloon" placement="left">
+                        <IconButton onClick={locateBalloon}>
+                            <ArrowForwardIcon />
+                        </IconButton>
+                    </Tooltip>
+                    {false&&<Tooltip title="Locate Me" placement="left">
+                        <IconButton>
+                            <MyLocationIcon />
+                        </IconButton>
+                    </Tooltip>}
+                </Box>
             </div>
 
             <div style={{

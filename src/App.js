@@ -13,7 +13,6 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import Snackbar from '@material-ui/core/Snackbar'
 import Box from '@material-ui/core/Box'
 import Tooltip from '@material-ui/core/Tooltip'
-import Paper from '@material-ui/core/Paper'
 
 import Plots from './Plots'
 import Chips from './Chips'
@@ -298,20 +297,18 @@ const App = () => {
                 top: 0,
                 padding: 10
             }}>
-                <Paper style={{ opacity: 0.8 }}>
-                    <Box display="flex" flexDirection="column">
-                        <Tooltip title="Plots" placement="right">
-                            <IconButton onClick={() => setDisplayPlots(true)} size="small">
-                                <ShowChartIcon />
-                            </IconButton>
-                        </Tooltip>
-                        <Tooltip title="List Flights" placement="right">
-                            <IconButton onClick={() => setDisplayListFlights(true)} size="small">
-                                <ListIcon />
-                            </IconButton>
-                        </Tooltip>
-                    </Box>
-                </Paper>
+                <Box display="flex" flexDirection="column">
+                    <Tooltip title="Plots" placement="right">
+                        <IconButton onClick={() => setDisplayPlots(true)}>
+                            <ShowChartIcon />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="List Flights" placement="right">
+                        <IconButton onClick={() => setDisplayListFlights(true)}>
+                            <ListIcon />
+                        </IconButton>
+                    </Tooltip>
+                </Box>
             </div>}
 
             <Snackbar
