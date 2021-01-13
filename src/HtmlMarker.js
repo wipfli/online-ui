@@ -5,12 +5,11 @@ import mapboxgl from 'mapbox-gl'
 const HtmlMarker = ({
     map,
     longitude,
-    latitude
+    latitude,
+    children
 }) => {
-    const point = [longitude, latitude]
 
     const ref = useRef(null)
-
     const [marker, setMarker] = useState(null)
 
     useEffect(() => {
@@ -18,17 +17,21 @@ const HtmlMarker = ({
             const marker = new mapboxgl.Marker({
                 element: ref.current
             })
-                .setLngLat(point)
+                .setLngLat([longitude, latitude])
                 .addTo(map)
             setMarker(marker)
         }
     }, [map])
 
+    useEffect(() => {
+        if (marker) {
+            marker.setLngLat([longitude, latitude])
+        }
+    }, [longitude, latitude])
+
     return (
         <div ref={ref}>
-            <svg height="8" width="8">
-                <circle cx="4" cy="4" r="4" fill="#3498db" />
-            </svg>
+            { children }
         </div>
     )
 }

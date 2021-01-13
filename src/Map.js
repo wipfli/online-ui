@@ -13,6 +13,7 @@ import Link from '@material-ui/core/Link'
 import Tooltip from '@material-ui/core/Tooltip'
 
 import MapTrace from './MapTrace'
+import MyLocation from './MyLocation'
 
 import myBestStyle from './style.json'
 
@@ -30,6 +31,8 @@ const Map = ({
     const [zoom, setZoom] = useState(10)
     const [map, setMap] = useState(null)
     const mapContainerRef = useRef(null)
+    const [showMyLocation, setShowMyLocation] = useState(false)
+    const [locateMeCounter, setLocateMeCounter] = useState(0)
 
     const zoomIn = () => {
         if (map) {
@@ -57,6 +60,13 @@ const Map = ({
                 maxZoom: 16
             })
         }
+    }
+
+    const locateMe = () => {
+        if (!showMyLocation) {
+            setShowMyLocation(true)
+        }
+        setLocateMeCounter(c => c + 1)
     }
 
     useEffect(() => {
@@ -143,11 +153,11 @@ const Map = ({
                             <ArrowForwardIcon />
                         </IconButton>
                     </Tooltip>
-                    {false&&<Tooltip title="Locate Me" placement="left">
-                        <IconButton>
+                    <Tooltip title="Locate Me" placement="left">
+                        <IconButton onClick={locateMe}>
                             <MyLocationIcon />
                         </IconButton>
-                    </Tooltip>}
+                    </Tooltip>
                 </Box>
             </div>
 
@@ -178,6 +188,11 @@ const Map = ({
                 imagePath="/balloon.png"
                 loading={loading}
             />
+
+            {showMyLocation && <MyLocation 
+                map={map}
+                locateMeCounter={locateMeCounter}
+            />}
         </div>
     )
 
