@@ -236,6 +236,31 @@ const App = () => {
                 utcOffset={utcOffset}
             />
 
+            <div style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                padding: 10
+            }}>
+                <Box display="flex" flexDirection="column" alignItems="flex-start">
+                    <Box display="flex">
+                        <Tooltip title="Plots" placement="right">
+                            <IconButton onClick={() => {
+                                setDisplayPlots(true)
+                            }}>
+                                <ShowChartIcon />
+                            </IconButton>
+                        </Tooltip>
+                        {displayPlots && <CircularProgress size={50} m={1}/>}
+                    </Box>
+                    <Tooltip title="List Flights" placement="right">
+                        <IconButton onClick={() => setDisplayListFlights(true)}>
+                            <ListIcon />
+                        </IconButton>
+                    </Tooltip>
+                </Box>
+            </div>
+
             {displayPlots &&
                 <Plots
                     handleClose={() => setDisplayPlots(false)}
@@ -290,26 +315,6 @@ const App = () => {
                     dataUrl={dataUrl}
                 />
             }
-
-            {!displayPlots && !displayListFlights && <div style={{
-                position: 'absolute',
-                left: 0,
-                top: 0,
-                padding: 10
-            }}>
-                <Box display="flex" flexDirection="column">
-                    <Tooltip title="Plots" placement="right">
-                        <IconButton onClick={() => setDisplayPlots(true)}>
-                            <ShowChartIcon />
-                        </IconButton>
-                    </Tooltip>
-                    <Tooltip title="List Flights" placement="right">
-                        <IconButton onClick={() => setDisplayListFlights(true)}>
-                            <ListIcon />
-                        </IconButton>
-                    </Tooltip>
-                </Box>
-            </div>}
 
             <Snackbar
                 open={displaySnackbar}
