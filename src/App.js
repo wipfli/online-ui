@@ -21,7 +21,7 @@ import ListFlights from './ListFlights'
 
 const tileserverUrl = 'https://ballometer.io/tiles/'
 
-const dataUrl = ''
+const dataUrl = 'https://ballometer.io/'
 
 const getInitialData = (
     setData,

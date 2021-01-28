@@ -30,7 +30,9 @@ const ListFlights = ({
     useEffect(() => {
         axios.get(dataUrl + '/api/read/listFlights?username=' + username)
             .then(res => {
-                setFlights(res.data)
+                setFlights(res.data.sort((a, b) => {
+                    return Number(a.flight_id) > Number(b.flight_id) ? -1 : 1
+                }))
             })
             .catch(err => {
                 console.log('ListFlights error')
@@ -52,7 +54,7 @@ const ListFlights = ({
                     <Skeleton />
                 </div>}
                 <List component="nav">
-                    {flights.reverse().map((flight, index) => {
+                    {flights.map((flight, index) => {
                         return (
                             <ListItemLink key={index} href={'/' + username + '/' + flight.flight_id}>
                                 <ListItemText>
