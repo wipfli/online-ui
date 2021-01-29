@@ -101,6 +101,20 @@
             "type": "fill"
         },
         {
+            "id": "waterway",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "waterway",
+            "filter": [
+                "==",
+                "$type",
+                "LineString"
+            ],
+            "paint": {
+                "line-color": "hsl(205, 56%, 73%)"
+            }
+        },
+        {
             "filter": [
                 "all",
                 [
@@ -3516,6 +3530,30 @@
                 "text-halo-color": "rgba(255, 255, 255, 1)",
                 "icon-color": "rgba(0, 0, 0, 1)"
             }
+        },
+        {
+            "filter": [
+                "==",
+                "$type",
+                "LineString"
+            ],
+            "id": "water_label",
+            "layout": {
+                "symbol-placement": "line",
+                "text-field": "{name}",
+                "text-font": [
+                    "Noto Sans Regular"
+                ],
+                "text-letter-spacing": 1,
+                "text-rotation-alignment": "map",
+                "text-size": 16
+            },
+            "paint": {
+                "text-color": "#067ed0"
+            },
+            "source": "openmaptiles",
+            "source-layer": "water_name",
+            "type": "symbol"
         },
         {
             "id": "aviation-airspace-labels",
