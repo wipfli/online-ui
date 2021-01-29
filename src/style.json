@@ -3328,13 +3328,33 @@
             "type": "symbol"
         },
         {
-            "id": "mountain_peak",
+            "id": "mountain_peak_name",
             "type": "symbol",
             "source": "openmaptiles",
             "source-layer": "mountain_peak",
             "minzoom": 9,
             "layout": {
-                "text-field": "{name:latin}\n{ele} m",
+                "text-anchor": "bottom",
+                "text-field": "{name:latin}",
+                "text-font": [
+                    "Noto Sans Regular"
+                ],
+                "text-size": 11
+            },
+            "paint": {
+                "text-color": "gray"
+            }
+        },
+        {
+            "id": "mountain_peak_ele",
+            "type": "symbol",
+            "source": "openmaptiles",
+            "source-layer": "mountain_peak",
+            "minzoom": 9,
+            "layout": {
+                "text-anchor": "top",
+                "text-field": "{ele} m",
+                "text-offset": [0, 0.5],
                 "text-font": [
                     "Noto Sans Regular"
                 ],
