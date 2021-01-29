@@ -3217,7 +3217,7 @@
             "layout": {
                 "icon-size": 1,
                 "text-anchor": "top",
-                "text-field": "{name}",
+                "text-field": "{name:latin}",
                 "text-font": [
                     "Noto Sans Regular"
                 ],
@@ -3248,7 +3248,7 @@
             "id": "road_major_label",
             "layout": {
                 "symbol-placement": "line",
-                "text-field": "{name}",
+                "text-field": "{name:latin}",
                 "text-font": [
                     "Noto Sans Regular"
                 ],
@@ -3298,7 +3298,7 @@
             "id": "place_label_other",
             "layout": {
                 "text-anchor": "center",
-                "text-field": "{name}",
+                "text-field": "{name:latin}",
                 "text-font": [
                     "Noto Sans Regular"
                 ],
@@ -3328,6 +3328,23 @@
             "type": "symbol"
         },
         {
+            "id": "mountain_peak",
+            "type": "symbol",
+            "source": "openmaptiles",
+            "source-layer": "mountain_peak",
+            "minzoom": 9,
+            "layout": {
+                "text-field": "{name:latin}\n{ele} m",
+                "text-font": [
+                    "Noto Sans Regular"
+                ],
+                "text-size": 11
+            },
+            "paint": {
+                "text-color": "gray"
+            }
+        },
+        {
             "filter": [
                 "all",
                 [
@@ -3343,7 +3360,7 @@
             ],
             "id": "place_label_city",
             "layout": {
-                "text-field": "{name}",
+                "text-field": "{name:latin}",
                 "text-font": [
                     "Noto Sans Regular"
                 ],
@@ -3540,7 +3557,7 @@
             "id": "water_label",
             "layout": {
                 "symbol-placement": "line",
-                "text-field": "{name}",
+                "text-field": "{name:latin}",
                 "text-font": [
                     "Noto Sans Regular"
                 ],
