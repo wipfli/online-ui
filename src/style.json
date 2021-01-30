@@ -3279,6 +3279,25 @@
             "type": "symbol"
         },
         {
+            "id": "place_ele",
+            "type": "symbol",
+            "source": "aviation",
+            "source-layer": "place_ele",
+            "minzoom": 9,
+            "layout": {
+                "text-field": "{ele} m",
+                "text-anchor": "top",
+                "text-offset": [0, 0.5],
+                "text-font": [
+                    "Noto Sans Regular"
+                ],
+                "text-size": 11
+            },
+            "paint": {
+                "text-color": "gray"
+            }
+        },
+        {
             "filter": [
                 "all",
                 [
@@ -3297,7 +3316,8 @@
             ],
             "id": "place_label_other",
             "layout": {
-                "text-anchor": "center",
+                "text-anchor": "bottom",
+                "text-offset": [0, 0],
                 "text-field": "{name:latin}",
                 "text-font": [
                     "Noto Sans Regular"
@@ -3384,6 +3404,8 @@
                 "text-font": [
                     "Noto Sans Regular"
                 ],
+                "text-anchor": "bottom",
+                "text-offset": [0, 0],
                 "text-max-width": 10,
                 "text-size": {
                     "stops": [
