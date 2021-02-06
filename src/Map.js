@@ -15,7 +15,8 @@ import Tooltip from '@material-ui/core/Tooltip'
 import MapTrace from './MapTrace'
 import MyLocation from './MyLocation'
 
-import myBestStyle from './style.json'
+//import myBestStyle from './style.json'
+import myBestStyle from './style-swisstopo-ballometer.json'
 
 const Map = ({
     viewportWidth,
@@ -167,10 +168,11 @@ const Map = ({
                 bottom: 0
             }}>
                 <Box display="flex" justifyContent="flex-end" mx={1} color="text.secondary">
-                    <Typography variant="caption">
+                    <Typography  style={{fontSize: 12}}>
                         <Link color="inherit" href="https://www.openaip.net/">©openAIP </Link>
                         <Link color="inherit" href="https://openmaptiles.org/">©OpenMapTiles </Link>
                         <Link color="inherit" href="https://www.openstreetmap.org/about/">©OpenStreetMap </Link>
+                        <Link color="inherit" href="https://www.geo.admin.ch/">©swisstopo </Link>
                     </Typography>
                 </Box>
             </div>
