@@ -9,7 +9,7 @@ const getStation = (feature, time) => {
                 resolve({
                     id: id,
                     name: feature.properties.name,
-                    temperature: res.data.temperature ? res.data.temperature.toFixed(0) : '-', // deg C
+                    temperature: res.data.temperature ? res.data.temperature.toFixed(0) : '--', // deg C
                     windDirection: res.data.windDirection ? res.data.windDirection : 0.0, // deg
                     windSpeed: res.data.windSpeed ? res.data.windSpeed.toFixed(0) : '-', // km/h
                     gustSpeed: res.data.gustSpeed ? res.data.gustSpeed.toFixed(0) : '-',  // km/h
