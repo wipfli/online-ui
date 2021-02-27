@@ -14,6 +14,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 
 import MapTrace from './MapTrace'
 import MyLocation from './MyLocation'
+import Stations from './Stations'
 
 //import myBestStyle from './style.json'
 import myBestStyle from './style-swisstopo-ballometer.json'
@@ -195,6 +196,7 @@ const Map = ({
                 map={map}
                 locateMeCounter={locateMeCounter}
             />}
+            <Stations map={map} />
         </div>
     )
 
