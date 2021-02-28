@@ -6,11 +6,15 @@ import {
 
 import App from './App'
 import Home from './Home'
+import LiveMap from './LiveMap'
 
 export default function Main() {
     return (
         <Router>
             <Switch>
+                <Route path="/map">
+                    <LiveMap />
+                </Route>
                 <Route path="/:username/:flightId">
                     <App />
                 </Route>
