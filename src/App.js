@@ -21,8 +21,6 @@ import MapTrace from './MapTrace'
 import Stations from './Stations'
 import ListFlights from './ListFlights'
 
-const tileserverUrl = 'https://ballometer.io/tiles/'
-
 const dataUrl = 'https://ballometer.io/'
 
 const getInitialData = (
@@ -222,11 +220,8 @@ const App = () => {
             <Map
                 viewportWidth={viewportWidth}
                 viewportHeight={viewportHeight}
-                tileserverUrl={tileserverUrl}
-                data={data}
-                index={index}
-                callbackIndex={setIndex}
-                loading={loading}
+                centerLongitude={data.longitude[index]}
+                centerLatitude={data.latitude[index]}
                 shareMap={setMap}
             />
 

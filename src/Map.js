@@ -18,8 +18,8 @@ import myBestStyle from './style-swisstopo-ballometer.json'
 const Map = ({
     viewportWidth,
     viewportHeight,
-    data,
-    index,
+    centerLongitude,
+    centerLatitude,
     shareMap,
 }) => {
 
@@ -54,7 +54,7 @@ const Map = ({
         const map = new mapboxgl.Map({
             container: mapContainerRef.current,
             style: myBestStyle,
-            center: [data.longitude[index], data.latitude[index]],
+            center: [centerLongitude, centerLatitude],
             zoom: zoom,
             attributionControl: false
         })
