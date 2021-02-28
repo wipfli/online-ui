@@ -7,12 +7,10 @@ import { IconButton, Typography } from '@material-ui/core'
 import MyLocationIcon from '@material-ui/icons/MyLocation'
 import AddIcon from '@material-ui/icons/Add'
 import RemoveIcon from '@material-ui/icons/Remove'
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import Box from '@material-ui/core/Box'
 import Link from '@material-ui/core/Link'
 import Tooltip from '@material-ui/core/Tooltip'
 
-import MapTrace from './MapTrace'
 import MyLocation from './MyLocation'
 import Stations from './Stations'
 
@@ -22,11 +20,8 @@ import myBestStyle from './style-swisstopo-ballometer.json'
 const Map = ({
     viewportWidth,
     viewportHeight,
-    tileserverUrl,
     data,
     index,
-    callbackIndex,
-    loading,
     gpsFix,
     shareMap,
 }) => {
@@ -48,20 +43,6 @@ const Map = ({
         if (map) {
             map.setZoom(zoom - 1)
             setZoom(zoom - 1)
-        }
-    }
-
-    const points = data.longitude.map((value, index) => {
-        return [value, data.latitude[index]]
-    })
-
-    const locateBalloon = () => {
-        callbackIndex(data.latitude.length - 1)
-        if (map) {
-            map.fitBounds([points[0], points.slice(-1)[0]], {
-                padding: 50,
-                maxZoom: 16
-            })
         }
     }
 
@@ -90,11 +71,6 @@ const Map = ({
         map.dragRotate.disable()
         map.touchZoomRotate.disableRotation()
 
-        map.fitBounds([points[0], points.slice(-1)[0]], {
-            padding: 50,
-            maxZoom: 12
-        })
-
         map.on('move', () => {
             setZoom(map.getZoom())
         })
@@ -112,15 +88,6 @@ const Map = ({
             map.resize()
         }
     }, [viewportWidth, viewportHeight])
-
-    useEffect(() => {
-        if (map && (!loading || gpsFix)) {
-            map.fitBounds([points[0], points.slice(-1)[0]], {
-                padding: 50,
-                maxZoom: 16
-            })
-        }
-    }, [loading, gpsFix])
 
     return (
         <div>
@@ -151,11 +118,6 @@ const Map = ({
                             <RemoveIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Go to Balloon" placement="left">
-                        <IconButton onClick={locateBalloon}>
-                            <ArrowForwardIcon />
-                        </IconButton>
-                    </Tooltip>
                     <Tooltip title="Locate Me" placement="left">
                         <IconButton onClick={locateMe}>
                             <MyLocationIcon />
@@ -170,7 +132,7 @@ const Map = ({
                 bottom: 0
             }}>
                 <Box display="flex" justifyContent="flex-end" mx={1} color="text.secondary">
-                    <Typography  style={{fontSize: 12}}>
+                    <Typography style={{ fontSize: 12 }}>
                         <Link color="inherit" href="https://www.openaip.net/">©openAIP </Link>
                         <Link color="inherit" href="https://openmaptiles.org/">©OpenMapTiles </Link>
                         <Link color="inherit" href="https://www.openstreetmap.org/about/">©OpenStreetMap </Link>
@@ -179,21 +141,7 @@ const Map = ({
                 </Box>
             </div>
 
-            <MapTrace
-                map={map}
-                name="balloon"
-                points={points}
-                speed={data.speed}
-                heading={data.heading}
-                index={index}
-                callbackIndex={callbackIndex}
-                color="#3498db"
-                historyVisible={true}
-                imagePath="/balloon.png"
-                loading={loading}
-            />
-
-            {showMyLocation && <MyLocation 
+            {showMyLocation && <MyLocation
                 map={map}
                 locateMeCounter={locateMeCounter}
             />}

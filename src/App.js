@@ -17,6 +17,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Plots from './Plots'
 import Chips from './Chips'
 import Map from './Map'
+import MapTrace from './MapTrace'
 import ListFlights from './ListFlights'
 
 const tileserverUrl = 'https://ballometer.io/tiles/'
@@ -121,6 +122,11 @@ const App = () => {
         longitude: [8.55301],
         latitude: [47.35257],
     })
+
+    const points = data.longitude.map((value, index) => {
+        return [value, data.latitude[index]]
+    })
+
     const [now, setNow] = useState(null)
 
     const [index, setIndex] = useState(0)
@@ -230,6 +236,20 @@ const App = () => {
                 shareMap={setMap}
             />
 
+            <MapTrace
+                map={map}
+                name="balloon"
+                points={points}
+                speed={data.speed}
+                heading={data.heading}
+                index={index}
+                callbackIndex={setIndex}
+                color="#3498db"
+                historyVisible={true}
+                imagePath="/balloon.png"
+                loading={loading}
+            />
+
             <Chips
                 speed={data.speed[index]}
                 heading={data.heading[index]}
@@ -254,7 +274,7 @@ const App = () => {
                                 <ShowChartIcon />
                             </IconButton>
                         </Tooltip>
-                        {displayPlots && <CircularProgress size={50} m={1}/>}
+                        {displayPlots && <CircularProgress size={50} m={1} />}
                     </Box>
                     <Tooltip title="List Flights" placement="right">
                         <IconButton onClick={() => setDisplayListFlights(true)}>

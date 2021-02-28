@@ -32,7 +32,7 @@ const MapTrace = ({
     useEffect(() => {
         callbackIndex(findClosest(points, dragPoint))
     }, [dragPoint])
-    
+
     return (
         <div>
             <Line
@@ -76,7 +76,7 @@ const MapTrace = ({
                 visible={!loading}
                 imagePath={imagePath}
             />
-            <Projection 
+            <Projection
                 map={map}
                 name={buildName(name)}
                 point={points[index]}
