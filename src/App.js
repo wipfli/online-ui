@@ -137,6 +137,8 @@ const App = () => {
     const [displaySnackbar, setDisplaySnackbar] = useState(false)
     const [snackbarMessage, setSnackbarMessage] = useState('')
 
+    const [map, setMap] = useState(null)
+
     const handleSnackbarClose = () => setDisplaySnackbar(false)
 
     const informUser = message => {
@@ -225,6 +227,7 @@ const App = () => {
                 callbackIndex={setIndex}
                 loading={loading}
                 gpsFix={gpsFix}
+                shareMap={setMap}
             />
 
             <Chips

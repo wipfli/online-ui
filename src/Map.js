@@ -27,7 +27,8 @@ const Map = ({
     index,
     callbackIndex,
     loading,
-    gpsFix
+    gpsFix,
+    shareMap,
 }) => {
 
     const [zoom, setZoom] = useState(10)
@@ -103,7 +104,7 @@ const Map = ({
         })
 
         setMap(map)
-
+        shareMap(map)
     }, [])
 
     useEffect(() => {
