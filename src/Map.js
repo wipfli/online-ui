@@ -13,7 +13,6 @@ import Tooltip from '@material-ui/core/Tooltip'
 
 import MyLocation from './MyLocation'
 
-//import myBestStyle from './style.json'
 import myBestStyle from './style-swisstopo-ballometer.json'
 
 const Map = ({
@@ -21,11 +20,10 @@ const Map = ({
     viewportHeight,
     data,
     index,
-    gpsFix,
     shareMap,
 }) => {
 
-    const [zoom, setZoom] = useState(10)
+    const [zoom, setZoom] = useState(6)
     const [map, setMap] = useState(null)
     const mapContainerRef = useRef(null)
     const [showMyLocation, setShowMyLocation] = useState(false)

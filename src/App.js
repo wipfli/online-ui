@@ -139,8 +139,6 @@ const App = () => {
 
     const [loading, setLoading] = useState(true)
 
-    const [gpsFix, setGpsFix] = useState(false)
-
     const [displaySnackbar, setDisplaySnackbar] = useState(false)
     const [snackbarMessage, setSnackbarMessage] = useState('')
 
@@ -214,10 +212,6 @@ const App = () => {
             latitude: [...data.latitude, replaceNull('latitude', data, now)]
         })
 
-        if (now.longitude) {
-            setGpsFix(true)
-        }
-
         if (index === lengthBefore - 1) {
             setIndex(index => index + 1)
         }
@@ -233,7 +227,6 @@ const App = () => {
                 index={index}
                 callbackIndex={setIndex}
                 loading={loading}
-                gpsFix={gpsFix}
                 shareMap={setMap}
             />
 
