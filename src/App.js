@@ -18,6 +18,7 @@ import Plots from './Plots'
 import Chips from './Chips'
 import Map from './Map'
 import MapTrace from './MapTrace'
+import Stations from './Stations'
 import ListFlights from './ListFlights'
 
 const tileserverUrl = 'https://ballometer.io/tiles/'
@@ -249,6 +250,9 @@ const App = () => {
                 imagePath="/balloon.png"
                 loading={loading}
             />
+
+
+            <Stations map={map} />
 
             <Chips
                 speed={data.speed[index]}
