@@ -16,6 +16,7 @@ jobs:
         node-version: 14.x
     - run: npm i
     - run: npm run build
+    - run: cat /home/runner/.npm/_logs/*-debug.log
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.1.0
       with:
