@@ -1,2 +1,3 @@
-# online-ui
-Online frontend for the ballometer
+# ballometer.github.io
+
+Hosts the source code for https://ballometer.io/.
