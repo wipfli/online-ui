@@ -1,6 +1,6 @@
 # ballometer.github.io
 
-Hosts the source code for https://ballometer.io/.
+Hosts the frontend source code for https://ballometer.io/.
 
 ## install
 
