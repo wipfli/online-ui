@@ -1,4 +1,4 @@
-# ballometer.github.io
+# frontend
 
 Hosts the frontend source code for https://ballometer.io/.
 
@@ -26,8 +26,3 @@ PORT=3000 npm start
 ```bash
 npm run build
 ```
-
-## deploy (GitHub Action Workflow)
-
-With a GitHub actions workflow the website is built on push to `main` and deployed to the `gh-pages` branch by [`build-deploy.yml`](https://github.com/ballometer/ballometer.github.io/blob/main/.github/workflows/build-deploy.yml).
-
