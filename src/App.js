@@ -21,7 +21,7 @@ import MapTrace from './MapTrace'
 import Stations from './Stations'
 import ListFlights from './ListFlights'
 
-const dataUrl = 'https://ballometer.io/'
+const dataUrl = 'https://api.ballometer.io/'
 
 const getInitialData = (
     setData,
@@ -32,8 +32,8 @@ const getInitialData = (
     flightId
 ) => {
 
-    const url = dataUrl + '/api/read/points?username=' + username
-        + (flightId ? '&flightId=' + flightId : '')
+    const flightIdQuery = flightId ? `&flightId=${flightId}` : ''
+    const url = `${dataUrl}read/points?username=${username}${flightIdQuery}`
 
     axios.get(url)
         .then(res => {
@@ -96,7 +96,8 @@ const getInitialData = (
 }
 
 const getNow = (setNow, username) => {
-    axios.get(dataUrl + '/api/read/now?username=' + username)
+    const url = `${dataUrl}read/now?username=${username}`
+    axios.get(url)
         .then(res => {
             setNow(res.data)
         })

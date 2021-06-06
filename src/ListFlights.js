@@ -28,7 +28,8 @@ const ListFlights = ({
     const [flights, setFlights] = useState([])
 
     useEffect(() => {
-        axios.get(dataUrl + '/api/read/listFlights?username=' + username)
+        const url = `${dataUrl}read/listFlights?username=${username}`
+        axios.get(url)
             .then(res => {
                 setFlights(res.data.sort((a, b) => {
                     return Number(a.flight_id) > Number(b.flight_id) ? -1 : 1
