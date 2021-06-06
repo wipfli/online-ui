@@ -21,7 +21,7 @@ import MapTrace from './MapTrace'
 import Stations from './Stations'
 import ListFlights from './ListFlights'
 
-const dataUrl = 'http://api.ballometer.io/'
+const dataUrl = 'https://api.ballometer.io/'
 
 const getInitialData = (
     setData,

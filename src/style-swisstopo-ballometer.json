@@ -20087,7 +20087,7 @@
     },
     "openmaptiles": {
       "type": "vector",
-      "url": "http://tiles.ballometer.io/data/v3.json"
+      "url": "https://tiles.ballometer.io/data/v3.json"
     },
     "swissmaptiles_contour": {
       "type": "vector",
@@ -20099,7 +20099,7 @@
     },
     "aviation": {
       "type": "vector",
-      "url": "http://tiles.ballometer.io/data/aviation.json"
+      "url": "https://tiles.ballometer.io/data/aviation.json"
     }
   },
   "sprite": "https://vectortiles.geo.admin.ch/gl-styles/ch.swisstopo.leichte-basiskarte.vt/v1.0.0/sprite",
