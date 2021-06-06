@@ -1,2 +1,0 @@
-https://gh-pages.ballometer.io/
-https://gh-pages.ballometer.io/?/map
