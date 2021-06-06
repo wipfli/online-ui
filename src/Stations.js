@@ -4,7 +4,7 @@ import axios from 'axios'
 const getStation = (feature, time) => {
     return new Promise((resolve, reject) => {
         const id = feature.properties.id
-        axios.get(`https://ballometer.io/api/weather/station?id=${id}&time=${time}`)
+        axios.get(`https://api.ballometer.io/weather/station?id=${id}&time=${time}`)
             .then(res => {
                 resolve({
                     id: id,
