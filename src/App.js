@@ -236,6 +236,13 @@ const App = () => {
                 centerLongitude={data.longitude[index]}
                 centerLatitude={data.latitude[index]}
                 shareMap={setMap}
+                trackBalloon={() => {
+                    setIndex(data.time.length - 1)
+                    map.setCenter([
+                        data.longitude.slice(-1).pop(), 
+                        data.latitude.slice(-1).pop()
+                    ])
+                }}
             />
 
             <MapTrace
