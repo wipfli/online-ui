@@ -92,7 +92,7 @@ const Stations = ({ map }) => {
                             "icon-rotate": ["get", "windDirection"],
                             "text-field": "{windSpeed} | {gustSpeed} km/h\n{name} {temperature} \u00b0C",
                             "text-font": [
-                                "Frutiger Neue Regular"
+                                "Noto Sans Regular"
                             ],
                             "text-size": 14,
                             "text-justify": "center",

@@ -4,17 +4,22 @@
     "metadata": {
         "openmaptiles:version": "3.x"
     },
+    "sprite": "https://vectortiles.geo.admin.ch/gl-styles/ch.swisstopo.leichte-basiskarte.vt/v1.0.0/sprite",
     "sources": {
+        "lbm_relief_jpg": {
+            "type": "raster",
+            "url": "https://swisstopo.maptiler.ch/vt-pipeline/tiles.json"
+        },
         "openmaptiles": {
             "type": "vector",
-            "url": "https://ballometer.io/tiles/data/v3.json"
+            "url": "https://tiles.ballometer.io/data/v3.json"
         },
         "aviation": {
             "type": "vector",
-            "url": "https://ballometer.io/tiles/data/aviation.json"
+            "url": "https://tiles.ballometer.io/data/aviation.json"
         }
     },
-    "glyphs": "https://ballometer.io/tiles/fonts/{fontstack}/{range}.pbf",
+    "glyphs": "https://tiles.ballometer.io/fonts/{fontstack}/{range}.pbf",
     "layers": [
         {
             "id": "background",
@@ -22,6 +27,29 @@
                 "background-color": "rgba(240, 244, 247, 1)"
             },
             "type": "background"
+        },
+        {
+            "id": "lbm_relief",
+            "paint": {
+              "raster-opacity": {
+                "stops": [
+                  [
+                    15,
+                    1
+                  ],
+                  [
+                    16.4,
+                    0.6
+                  ],
+                  [
+                    16.5,
+                    1
+                  ]
+                ]
+              }
+            },
+            "source": "lbm_relief_jpg",
+            "type": "raster"
         },
         {
             "filter": [
@@ -72,7 +100,7 @@
             "id": "landcover_wood",
             "paint": {
                 "fill-color": "rgba(195, 222, 179, 1)",
-                "fill-opacity": 1
+                "fill-opacity": 0.5
             },
             "source": "openmaptiles",
             "source-layer": "landcover",
@@ -3555,7 +3583,7 @@
             ],
             "layout": {
                 "symbol-placement": "line",
-                "text-field": "{N}",
+                "text-field": "{N} {AB} {AB_U} {AB_REF}",
                 "text-font": [
                     "Noto Sans Regular"
                 ],
@@ -3667,7 +3695,33 @@
                 "text-halo-color": "rgba(255, 255, 255, 1)",
                 "icon-color": "rgba(0, 0, 0, 1)"
             }
-        }
+        },
+        {
+            "id": "stations",
+            "type": "symbol",
+            "source": "aviation",
+            "source-layer": "stations",
+            "layout": {
+              "symbol-placement": "point",
+              "text-field": "- | - km/h\n{name} -- \u00b0C",
+              "text-font": [
+                "Noto Sans Regular"
+              ],
+              "text-size": 14,
+              "text-justify": "center",
+              "text-anchor": "top",
+              "text-offset": [
+                0.0,
+                1.0
+              ]
+            },
+            "paint": {
+              "text-color": "#8e44ad",
+              "text-halo-blur": 0.5,
+              "text-halo-width": 1,
+              "text-halo-color": "rgba(255, 255, 255, 1)"
+            }
+          }
     ],
     "id": "basic-preview"
 }

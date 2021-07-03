@@ -13,7 +13,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 
 import MyLocation from './MyLocation'
 
-import myBestStyle from './style-swisstopo-ballometer.json'
+import myBestStyle from './style.json'
 
 const Map = ({
     viewportWidth,
