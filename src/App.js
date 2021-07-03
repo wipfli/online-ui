@@ -216,6 +216,18 @@ const App = () => {
         }
     }, [now])
 
+    useEffect(() => {
+        if (!loading) {
+            map.fitBounds([
+                [data.longitude[0], data.latitude[0]],
+                [data.longitude.slice(-1).pop(), data.latitude.slice(-1).pop()]
+            ],  {
+                padding: 50,
+                maxZoom: 14,
+            })
+        }
+    }, [loading])
+
     return (
         <div>
             <Map
