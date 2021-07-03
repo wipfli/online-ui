@@ -7,6 +7,7 @@ import { IconButton, Typography } from '@material-ui/core'
 import MyLocationIcon from '@material-ui/icons/MyLocation'
 import AddIcon from '@material-ui/icons/Add'
 import RemoveIcon from '@material-ui/icons/Remove'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import Box from '@material-ui/core/Box'
 import Link from '@material-ui/core/Link'
 import Tooltip from '@material-ui/core/Tooltip'
@@ -21,6 +22,7 @@ const Map = ({
     centerLongitude,
     centerLatitude,
     shareMap,
+    trackBalloon,
 }) => {
 
     const [zoom, setZoom] = useState(6)
@@ -113,6 +115,11 @@ const Map = ({
                     <Tooltip title="Zoom Out" placement="left">
                         <IconButton onClick={zoomOut}>
                             <RemoveIcon />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Track Balloon" placement="left">
+                        <IconButton onClick={trackBalloon}>
+                            <ArrowForwardIcon />
                         </IconButton>
                     </Tooltip>
                     <Tooltip title="Locate Me" placement="left">
